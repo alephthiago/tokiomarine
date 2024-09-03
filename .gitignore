@@ -15,6 +15,7 @@ bin/
 .project
 .classpath
 .settings/
+.factorypath
 
 # Maven build output
 *.jar
