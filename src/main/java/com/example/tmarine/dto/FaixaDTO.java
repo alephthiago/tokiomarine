@@ -9,6 +9,8 @@ public class FaixaDTO {
 	private int diaFinal;
 
 	private BigDecimal taxa;
+	
+	private Boolean semEquadramento;
 
 	public int getDiaInicial() {
 		return diaInicial;
@@ -33,5 +35,15 @@ public class FaixaDTO {
 	public void setTaxa(BigDecimal taxa) {
 		this.taxa = taxa;
 	}
+
+	public Boolean getSemEquadramento() {
+		return semEquadramento;
+	}
+
+	public void setSemEquadramento(Boolean semEquadramento) {
+		this.semEquadramento = semEquadramento;
+	}
+	
+	
 
 }

@@ -1,6 +1,5 @@
 package com.example.tmarine.controller;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.tmarine.dto.FaixaDTO;
 import com.example.tmarine.dto.TransferenciaDTO;
 import com.example.tmarine.entity.Transferencia;
 import com.example.tmarine.service.ContaService;
@@ -42,20 +40,7 @@ public class TransferenciaController {
 	public ResponseEntity<HttpStatus> agendar(@RequestBody TransferenciaDTO transferenciaDTO){		
 		transferenciaService.agendar(mapper.map(transferenciaDTO, Transferencia.class));
 		return new ResponseEntity<>(HttpStatus.OK); 
-	}
-	
-	@GetMapping("/date")
-	public LocalDateTime findDate() {
-		System.out.println("Trying to find date");
-		return LocalDateTime.now();
-	}
-	
-	@PostMapping("/post-date")
-	public LocalDateTime postDate(@RequestBody TransferenciaDTO transferenciaDTO) {
-		System.out.println("this is your date"+transferenciaDTO.getDataTransferencia());
-		return transferenciaDTO.getDataTransferencia();
-
-	}
+	}	
 	
 	@GetMapping("/transferencias")
 	public List<TransferenciaDTO> bsucarTransferencias() {
