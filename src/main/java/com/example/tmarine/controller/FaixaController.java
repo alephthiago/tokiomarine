@@ -36,7 +36,6 @@ public class FaixaController {
 
 	@GetMapping("/faixas")
 	public List<FaixaDTO> findFaixas() {
-		System.out.println("Trying to find faixas");
 		return mapper.map(faixaService.buscarFaixas(), new TypeToken<List<FaixaDTO>>() {
 		}.getType());
 	}

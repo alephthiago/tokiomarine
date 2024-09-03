@@ -44,7 +44,6 @@ public class TransferenciaController {
 	
 	@GetMapping("/transferencias")
 	public List<TransferenciaDTO> bsucarTransferencias() {
-		System.out.println("Buscando Transferencias");		
 		return mapper.map(transferenciaService.buscarTransferencias(), new TypeToken<List<TransferenciaDTO>>() {
 		}.getType());
 	}

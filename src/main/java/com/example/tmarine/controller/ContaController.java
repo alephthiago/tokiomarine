@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +33,9 @@ public class ContaController {
 		this.messageSource = messageSource;
 	}
 
-	@GetMapping("/checar")
+	@PostMapping("/checar")
 	public ResponseEntity<String> checarSaldo(@RequestBody ContaValorDeduzirDTO contaValorDeduzirDTO) {
 		if (!contaService.contaExiste(contaValorDeduzirDTO.getContaOrigem())) {
-			System.out.println(messageSource.getMessage("account.source.not.found", null, null));
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageSource.getMessage("account.source.not.found", null, Locale.getDefault()));
 		} 
 		if (!contaService.contaExiste(contaValorDeduzirDTO.getContaDestino())) {
@@ -50,7 +50,6 @@ public class ContaController {
 
 	@GetMapping("/contas")
 	public List<ContaDTO> trazerContas() {
-		System.out.println("Trying to find contas");
 		return mapper.map(contaService.buscarTodasContas(), new TypeToken<List<ContaDTO>>() {
 		}.getType());
 	}
